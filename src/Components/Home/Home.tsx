@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Header from "./Header";
 
 const Home = () => {
-  document.title = "home";
+  document.title = "My Day - eTorDO";
   return (
     <Container>
       <Header />

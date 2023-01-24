@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { IoIosMenu } from "react-icons/io";
-import { FiSun } from "react-icons/fi";
+import { FiSun, FiStar, FiUserPlus } from "react-icons/fi";
+import { MdOutlineEventNote, MdOutlinePostAdd } from "react-icons/md";
+import { TiHomeOutline } from "react-icons/ti";
+import {
+  AiOutlinePlus,
+  AiOutlineUsergroupAdd,
+  AiOutlineMail,
+  AiOutlinePaperClip,
+} from "react-icons/ai";
+import { BsCheckAll } from "react-icons/bs";
 import NavProps from "./NavProps";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header: React.FC = () => {
   const [show, setShow] = useState<boolean>(true);
@@ -31,29 +40,86 @@ const Header: React.FC = () => {
                 </p>
               </BurgerMenu>
               <Navs>
-                <Link to="/tasks">
+                <NavLink
+                  to="tasks"
+                  style={({ isActive }) => ({
+                    background: isActive ? "#0a0a10" : undefined,
+                    textDecoration: "none",
+                  })}
+                >
                   <NavProps icon=<FiSun /> text="My Day" />
-                </Link>
+                </NavLink>
 
-                <Link to="/tasks/important">
-                  <NavProps icon=<FiSun /> text="Important" />
-                </Link>
+                <NavLink
+                  to="important"
+                  style={({ isActive }) => ({
+                    background: isActive ? "#0a0a10" : undefined,
+                    textDecoration: "none",
+                  })}
+                >
+                  <NavProps icon=<FiStar /> text="Important" />
+                </NavLink>
 
-                <Link to="/tasks/planned">
-                  <NavProps icon=<FiSun /> text="Planned" />
-                </Link>
+                <NavLink
+                  to="planned"
+                  style={({ isActive }) => ({
+                    background: isActive ? "#0a0a10" : undefined,
+                    textDecoration: "none",
+                  })}
+                >
+                  <NavProps icon=<MdOutlineEventNote /> text="Planned" />
+                </NavLink>
 
-                <Link to="/tasks/assigned_to_me">
-                  <NavProps icon=<FiSun /> text="Assigned to me" />
-                </Link>
+                <NavLink
+                  to="assigned-to-me"
+                  style={({ isActive }) => ({
+                    background: isActive ? "#0a0a10" : undefined,
+                    textDecoration: "none",
+                  })}
+                >
+                  <NavProps icon=<FiUserPlus /> text="Assigned to me" />
+                </NavLink>
 
-                <Link to="/tasks/inbox">
-                  <NavProps icon=<FiSun /> text="Tasks" />
-                </Link>
+                <NavLink
+                  to="inbox"
+                  style={({ isActive }) => ({
+                    background: isActive ? "#0a0a10" : undefined,
+                    textDecoration: "none",
+                  })}
+                >
+                  <NavProps icon=<TiHomeOutline /> text="Tasks" />
+                </NavLink>
               </Navs>
               <hr />
+              <NewList>
+                <NavBar2>
+                  <First>
+                    <AiOutlinePlus />
+                  </First>
+                  <input type="text" placeholder="New list" />
+                </NavBar2>
+                <Icon col="#2564ebb0" font="20px">
+                  <MdOutlinePostAdd />
+                </Icon>
+              </NewList>
             </NavBar>
-            <BtmNav></BtmNav>
+            <BtmNav>
+              <Icon col="#ffffffdf" font="18px">
+                <AiOutlineMail />
+              </Icon>
+              <Icon col="#ffffffdf" font="18px">
+                <MdOutlineEventNote />
+              </Icon>
+              <Icon col="#ffffffdf" font="18px">
+                <AiOutlineUsergroupAdd />
+              </Icon>
+              <Icon col="#ffffffdf" font="18px">
+                <AiOutlinePaperClip />
+              </Icon>
+              <Icon col="#ffffffdf" font="18px">
+                <BsCheckAll />
+              </Icon>
+            </BtmNav>
           </Sidebar>
         ) : (
           <BurgerMenu left="30px" top="30px">
@@ -71,8 +137,60 @@ export default Header;
 
 // const Container = styled.div`
 // `
-// const Container = styled.div`
-// `
+
+const NavBar2 = styled.div`
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  input {
+    height: 4vh;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    font-size: 15px;
+    color: #ffffffdf;
+    margin-left: 10px;
+
+    ::placeholder {
+      color: #2564ebb0;
+    }
+  }
+
+  :hover {
+    background-color: #0a0a10;
+  }
+`;
+const Icon = styled.div<{ col: string; font: string }>`
+  width: 30%;
+  height: 100%;
+  color: ${({ col }) => col};
+  font-size: ${({ font }) => font};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  :hover {
+    background-color: #0a0a10;
+  }
+`;
+const First = styled.div`
+  margin-left: 30px;
+  display: flex;
+  font-size: 18px;
+  color: #2564ebb0;
+
+  :hover {
+    cursor: pointer;
+  }
+`;
+const NewList = styled.div`
+  width: 100%;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+`;
 const User = styled.div`
   width: 200px;
   height: 60%;
@@ -125,7 +243,7 @@ const BurgerMenu = styled.div<{ left: string; top: string }>`
 const BtmNav = styled.div`
   width: 100%;
   height: 6vh;
-  background-color: pink;
+  display: flex;
 `;
 const NavBar = styled.div`
   width: 100%;

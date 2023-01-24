@@ -15,7 +15,7 @@ const AllRoutes: React.FC = () => {
       element: <Register />,
     },
     {
-      path: "/home",
+      path: "/tasks",
       element: <Home />,
     },
   ]);

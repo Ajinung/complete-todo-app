@@ -25,7 +25,7 @@ const BodyRoutes: React.FC = () => {
           element: <Planned />,
         },
         {
-          path: "assigned_to_me",
+          path: "assigned-to-me",
           element: <Assigned />,
         },
         {
@@ -33,6 +33,10 @@ const BodyRoutes: React.FC = () => {
           element: <Tasks />,
         },
       ],
+    },
+    {
+      path: "*",
+      element: <Important />,
     },
   ]);
 

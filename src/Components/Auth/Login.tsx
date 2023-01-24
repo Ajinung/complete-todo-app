@@ -19,7 +19,7 @@ const Login = () => {
           </span>
         </AuthArea>
         <Buttons>
-          <Button color="#fff" background="#03001c" to="/home">
+          <Button color="#fff" background="#03001c" to="/tasks">
             Sign in
           </Button>
         </Buttons>
@@ -42,6 +42,8 @@ const Footer = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #ffffffe2;
+  font-size: 15px;
 `;
 const Button = styled(NavLink)<{ color: string; background: string }>`
   background-color: ${(props) => props.background};
@@ -124,7 +126,16 @@ const Wrapper = styled.div`
 const Container = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: #03001c;
+  /* background-color: #0a0a10; */
+  background: radial-gradient(
+    circle at -8.9% 51.2%,
+    rgb(255, 124, 0) 0%,
+    rgb(255, 124, 0) 15.9%,
+    rgb(255, 163, 77) 15.9%,
+    rgb(255, 163, 77) 24.4%,
+    rgb(19, 30, 37) 24.5%,
+    rgb(19, 30, 37) 66%
+  );
   color: #000000ca;
 
   /* background-color: #241d33; */
